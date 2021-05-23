@@ -8,40 +8,37 @@
 import SwiftUI
 
 struct RoundedImageViewStroked: View {
-    @Environment(\.colorScheme) var colorScheme
     var systemName: String
 
     var body: some View {
         Image(systemName: systemName)
             .font(.title)
-            .foregroundColor(colorScheme == .light ? Color.Light.textColor : Color.Dark.textColor)
-            .frame(width: 56, height: 56)
+            .foregroundColor(Color.textColor)
+            .frame(width: Constants.General.roundViewLength, height: Constants.General.roundViewLength)
             .overlay(
                 Circle()
-                    .strokeBorder(colorScheme == .light ? Color.Light.buttonStrokeColor: Color.Dark.buttonStrokeColor, lineWidth: 2.0)
+                    .strokeBorder(Color.buttonStrokeColor)
             )
     }
 }
 
 struct RoundedImageViewFilled: View {
-    @Environment(\.colorScheme) var colorScheme
     var systemName: String
 
     var body: some View {
         Image(systemName: systemName)
             .font(.title)
-            .foregroundColor(colorScheme == .light ? Color.Light.buttonFilledTextColor : Color.Dark.buttonFilledTextColor)
-            .frame(width: 56, height: 56)
+            .foregroundColor(Color.buttonFilledTextColor)
+            .frame(width: Constants.General.roundViewLength, height: Constants.General.roundViewLength)
             .background(
                 Circle()
-                    .fill(colorScheme == .light ? Color.Light.buttonFilledBackgroungColor : Color.Dark.buttonFilledBackgroungColor)
+                    .fill(Color.buttonFilledBackgroungColor)
 
             )
     }
 }
 
 struct RoundRectTextVeiw: View {
-    @Environment(\.colorScheme) var colorScheme
     var text: String
 
     var body: some View {
@@ -49,12 +46,30 @@ struct RoundRectTextVeiw: View {
             .bold()
             .font(.title3)
             .kerning(-0.2)
-            .frame(width: 68, height: 56)
-            .foregroundColor(colorScheme == .light ? Color.Light.textColor : Color.Dark.textColor)
+            .frame(width: Constants.General.roundRectViewWidth, height: Constants.General.roundRectViewHeight)
+            .foregroundColor(Color.textColor)
             .overlay(
-                RoundedRectangle(cornerRadius: 21.0)
-                    .strokeBorder(lineWidth: 2.0)
-                    .foregroundColor(colorScheme == .light ? Color.Light.buttonStrokeColor : Color.Dark.buttonStrokeColor)
+                Circle()
+                    .strokeBorder(Color.leaderBoardRowColor,
+                                  lineWidth: Constants.General.strokeWidth)
+            )
+    }
+}
+
+struct RoundedTextView: View {
+    let text: String
+
+    var body: some View {
+        Text(text)
+            .font(.title)
+            .frame(width: Constants.General.roundViewLength,
+                   height: Constants.General.roundViewLength)
+            .foregroundColor(Color.textColor)
+            .overlay(
+                Circle()
+                    .strokeBorder(Color.leaderBoardRowColor,
+                                  lineWidth: Constants.General.strokeWidth)
+                    .foregroundColor(Color.leaderBoardRowColor)
             )
     }
 }
@@ -65,6 +80,7 @@ struct PreviewView: View {
             RoundedImageViewStroked(systemName: "arrow.counterclockwise")
             RoundedImageViewFilled(systemName: "list.dash")
             RoundRectTextVeiw(text: "0")
+            RoundedTextView(text: "1")
         }
 
     }

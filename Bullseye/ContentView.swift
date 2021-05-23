@@ -18,10 +18,21 @@ struct ContentView: View {
             BackgroundView(game: $game)
             VStack {
                 InstructionView(game: $game)
+                    .padding(.bottom, alertIsVisible ? 0 : 100)
+                if alertIsVisible {
+                    PointsView(alertIsVisible: $alertIsVisible, sliderValue: $sliderValue, game: $game)
+                        .transition(.scale)
+                } else {
+                    HitMeButton(alertIsVisible: $alertIsVisible,
+                                sliderValue: $sliderValue,
+                                game: $game)
+                        .transition(.scale)
+                }
+
+            }
+            if !alertIsVisible {
                 SliderView(sliderValue: $sliderValue)
-                HitMeButton(alertIsVisible: $alertIsVisible,
-                            sliderValue: $sliderValue,
-                            game: $game)
+                    .transition(.scale)
             }
         }
     }
@@ -32,7 +43,7 @@ struct InstructionView: View {
 
     var body: some View {
         VStack {
-            InstructionText(text: "PUT THE BULLSEYE AS CLOSE AS YOU CAN TO")
+            InstructionText(text: "PUT THE BULLSEYE AS CLOSE AS YOU CAN TO".uppercased())
                 .padding(.leading, 30.0)
                 .padding(.trailing, 30.0)
             BigNumberText(text: String(game.target))

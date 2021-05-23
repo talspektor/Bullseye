@@ -20,6 +20,9 @@
 		433677EC2651B08C0058BB01 /* Shapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433677EB2651B08C0058BB01 /* Shapes.swift */; };
 		433677EE2652A4690058BB01 /* RoundedViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433677ED2652A4690058BB01 /* RoundedViews.swift */; };
 		433677F02652B4950058BB01 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433677EF2652B4950058BB01 /* BackgroundView.swift */; };
+		433677F22656C1410058BB01 /* PointsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433677F12656C1410058BB01 /* PointsView.swift */; };
+		433677F42657B6B30058BB01 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433677F32657B6B30058BB01 /* Constants.swift */; };
+		433677F6265804320058BB01 /* LeaderBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433677F5265804320058BB01 /* LeaderBoardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +53,9 @@
 		433677EB2651B08C0058BB01 /* Shapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shapes.swift; sourceTree = "<group>"; };
 		433677ED2652A4690058BB01 /* RoundedViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedViews.swift; sourceTree = "<group>"; };
 		433677EF2652B4950058BB01 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
+		433677F12656C1410058BB01 /* PointsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsView.swift; sourceTree = "<group>"; };
+		433677F32657B6B30058BB01 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		433677F5265804320058BB01 /* LeaderBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderBoardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,7 +98,6 @@
 			isa = PBXGroup;
 			children = (
 				433677E82651ADEE0058BB01 /* Colors */,
-				4320DE6C26512CC3000C863C /* App */,
 				4320DE6B26512CB9000C863C /* Views */,
 				4320DE6A26512CB0000C863C /* Models */,
 				4320DE61265114CD000C863C /* Preview Content */,
@@ -112,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				4320DE6D26512D33000C863C /* Game.swift */,
+				433677F32657B6B30058BB01 /* Constants.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -126,6 +132,8 @@
 				433677EB2651B08C0058BB01 /* Shapes.swift */,
 				433677ED2652A4690058BB01 /* RoundedViews.swift */,
 				433677EF2652B4950058BB01 /* BackgroundView.swift */,
+				433677F12656C1410058BB01 /* PointsView.swift */,
+				433677F5265804320058BB01 /* LeaderBoardView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -153,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				433677E92651AE0C0058BB01 /* Color+Extension.swift */,
+				4320DE6C26512CC3000C863C /* App */,
 			);
 			name = Colors;
 			sourceTree = "<group>";
@@ -259,11 +268,14 @@
 				433677F02652B4950058BB01 /* BackgroundView.swift in Sources */,
 				4320DE5E265114CB000C863C /* ContentView.swift in Sources */,
 				433677EA2651AE0C0058BB01 /* Color+Extension.swift in Sources */,
+				433677F42657B6B30058BB01 /* Constants.swift in Sources */,
+				433677F22656C1410058BB01 /* PointsView.swift in Sources */,
 				433677E3265149A20058BB01 /* TextViews.swift in Sources */,
 				433677EE2652A4690058BB01 /* RoundedViews.swift in Sources */,
 				433677EC2651B08C0058BB01 /* Shapes.swift in Sources */,
 				433677E526517BAD0058BB01 /* HitMeButton.swift in Sources */,
 				433677E72651AAD90058BB01 /* SliderView.swift in Sources */,
+				433677F6265804320058BB01 /* LeaderBoardView.swift in Sources */,
 				4320DE6E26512D33000C863C /* Game.swift in Sources */,
 				4320DE5C265114CB000C863C /* BullseyeApp.swift in Sources */,
 			);
@@ -411,6 +423,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Bullseye/Preview Content\"";
+				DEVELOPMENT_TEAM = M3C8BZ4H8Y;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Bullseye/App/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -432,6 +445,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Bullseye/Preview Content\"";
+				DEVELOPMENT_TEAM = M3C8BZ4H8Y;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Bullseye/App/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;

@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct BackgroundView: View {
-    @Environment(\.colorScheme) var colorScheme
     @Binding var game: Game
 
     var body: some View {
@@ -19,19 +18,31 @@ struct BackgroundView: View {
         }
         .padding()
         .background(
-            colorScheme == .light ? Color.Light.contentViewBackgroundColor : Color.Dark.contentViewBackgroundColor
-        )
+            RingsView()
+        ).edgesIgnoringSafeArea(.all)
     }
 }
 
 struct TopView: View {
     @Binding var game: Game
+    @State private var leaderboardIsShowing = false
 
     var body: some View {
         HStack {
-            RoundedImageViewStroked(systemName: "arrow.counterclockwise")
+            Button(action: {
+                game.restart()
+            }, label: {
+                RoundedImageViewStroked(systemName: "arrow.counterclockwise")
+            })
             Spacer()
-            RoundedImageViewFilled(systemName: "list.dash")
+            Button(action: {
+                leaderboardIsShowing = true
+            }, label: {
+                RoundedImageViewFilled(systemName: "list.dash")
+            }).sheet(isPresented: $leaderboardIsShowing, onDismiss: {}, content: {
+                LeaderBoardView(leaderboardIsShowing: $leaderboardIsShowing, game: $game)
+            })
+
         }
     }
 }
@@ -56,6 +67,34 @@ struct BottomView: View {
             NumberView(title: "Score", text: String(game.score))
             Spacer()
             NumberView(title: "Round", text: String(game.round))
+        }
+    }
+}
+
+struct RingsView: View {
+    @Environment(\.colorScheme) var colorScheme
+
+    var body: some View {
+        ZStack {
+            Color.contentViewBackgroundColor
+                .edgesIgnoringSafeArea(.all)
+            ForEach(1..<6) { ring in
+                let opacity = colorScheme == .dark ? 0.1 : 0.3
+                Circle()
+                    .stroke(lineWidth: 20.0)
+                    .fill(
+                        RadialGradient(
+                            gradient: Gradient(colors: [Color.ringColor.opacity(opacity * 0.8),
+                                                        Color.ringColor.opacity(0)]
+                            ),
+                            center: .center,
+                            startRadius: 100,
+                            endRadius: 300)
+                    )
+                    .frame(width: CGFloat(ring) * 100.0, height: CGFloat(ring) * 100.0)
+
+            }
+
         }
     }
 }

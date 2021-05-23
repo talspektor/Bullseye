@@ -1,11 +1,10 @@
 {
   "colors" : [
     {
-      "display-gamut" : "sRGB",
-      "idiom" : "universal"
-    },
-    {
-      "display-gamut" : "display-P3",
+      "color" : {
+        "platform" : "ios",
+        "reference" : "systemOrangeColor"
+      },
       "idiom" : "universal"
     }
   ],

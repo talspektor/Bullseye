@@ -8,14 +8,15 @@
 import SwiftUI
 
 struct HitMeButton: View {
-    @Environment(\.colorScheme) var colorScheme
     @Binding var alertIsVisible: Bool
     @Binding var sliderValue: Double
     @Binding var game: Game
 
     var body: some View {
         Button(action: {
-            alertIsVisible = true
+            withAnimation {
+                alertIsVisible = true
+            }
         }) {
             Text("Hit me".uppercased())
                 .bold()
@@ -36,23 +37,11 @@ struct HitMeButton: View {
             }
         )
         .foregroundColor(Color.white)
-        .cornerRadius(21.0)
+        .cornerRadius(Constants.General.roundRectCornerRadius)
         .overlay(
-            RoundedRectangle(cornerRadius: 21.0)
-                .strokeBorder(Color.white, lineWidth: 2.0)
+            RoundedRectangle(cornerRadius: Constants.General.roundRectCornerRadius)
+                .strokeBorder(Color.white, lineWidth: Constants.General.strokeWidth)
         )
-        .alert(isPresented: $alertIsVisible, content: {
-            let roundedValue = Int(sliderValue.rounded())
-            let points = game.points(sliderValue: roundedValue)
-            return Alert(title: Text("Hello there!")
-                            .foregroundColor(colorScheme == .light ? Color.Light.textColor : Color.Dark.textColor),
-                         message: Text("This slider value is: \(roundedValue).\n" +
-                                        "You scored \(points) points this round")
-                            .foregroundColor(colorScheme == .light ? Color.Light.textColor : Color.Dark.textColor),
-                         dismissButton: .default(Text("Awsome!")) {
-                            game.startNewRound(points: points)
-                         })
-        })
     }
 }
 
